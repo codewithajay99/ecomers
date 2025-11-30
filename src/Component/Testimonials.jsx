@@ -1,6 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import {  EffectCoverflow, Pagination } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+import 'swiper/css';
 
 export default function Testimonials() {
+ let[showPerPage,setShowPerPage]=useState(3)
+
+function handaleWindowResize(){
+if(window.innerWidth<768)
+  setShowPerPage(1)
+else 
+setShowPerPage(3)
+}
+window.addEventListener("resize",handaleWindowResize);
+// .........infinite loop ...............
+let options={
+  effect:'coverflow',
+  slidesPerView:showPerPage,
+        spaceBetween:50,
+         EffectCoverflow:true,
+        loop:true,
+        pagination:{
+          clickable: true,
+        },
+        modules:[ EffectCoverflow, Pagination],
+        className:"mySwiper"
+}
+
+
+
   return (
     <>
       <section id="testimonials" className="testimonials section">
@@ -10,10 +42,9 @@ export default function Testimonials() {
         </div>
 
         <div className="container" data-aos="fade-up" data-aos-delay="100">
-          <div className="swiper init-swiper">
-            <div className="swiper-wrapper">
+     <Swiper {...options}>
               {/* Testimonial 1 */}
-              <div className="swiper-slide">
+             <SwiperSlide>
                 <div className="testimonial-item">
                   <div className="stars">
                     <i className="bi bi-star-fill"></i>
@@ -38,10 +69,10 @@ export default function Testimonials() {
                     <h4>CEO &amp; Founder</h4>
                   </div>
                 </div>
-              </div>
+             </SwiperSlide>
 
               {/* Testimonial 2 */}
-              <div className="swiper-slide">
+             <SwiperSlide>
                 <div className="testimonial-item">
                   <div className="stars">
                     <i className="bi bi-star-fill"></i>
@@ -66,10 +97,10 @@ export default function Testimonials() {
                     <h4>Designer</h4>
                   </div>
                 </div>
-              </div>
+              </SwiperSlide>
 
               {/* Testimonial 3 */}
-              <div className="swiper-slide">
+             <SwiperSlide>
                 <div className="testimonial-item">
                   <div className="stars">
                     <i className="bi bi-star-fill"></i>
@@ -93,10 +124,10 @@ export default function Testimonials() {
                     <h4>Store Owner</h4>
                   </div>
                 </div>
-              </div>
+             </SwiperSlide>
 
               {/* Testimonial 4 */}
-              <div className="swiper-slide">
+             <SwiperSlide>
                 <div className="testimonial-item">
                   <div className="stars">
                     <i className="bi bi-star-fill"></i>
@@ -121,10 +152,10 @@ export default function Testimonials() {
                     <h4>Freelancer</h4>
                   </div>
                 </div>
-              </div>
+           </SwiperSlide>
 
               {/* Testimonial 5 */}
-              <div className="swiper-slide">
+             <SwiperSlide>
                 <div className="testimonial-item">
                   <div className="stars">
                     <i className="bi bi-star-fill"></i>
@@ -149,10 +180,9 @@ export default function Testimonials() {
                     <h4>Entrepreneur</h4>
                   </div>
                 </div>
-              </div>
+              </SwiperSlide>
+     </Swiper>
             </div>
-          </div>
-        </div>
       </section>
     </>
   );

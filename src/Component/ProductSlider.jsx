@@ -1,6 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { FreeMode, Pagination } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
+import 'swiper/css';
+
 
 export default function ProductSlider() {
+
+ let[showPerPage,setShowPerPage]=useState(3)
+
+function handaleWindowResize(){
+if(window.innerWidth<576)
+  setShowPerPage(1)
+else if(window.innerWidth<768)
+  setShowPerPage(2)
+else if(window.innerWidth<1200)
+  setShowPerPage(3)
+else 
+  setShowPerPage(4)
+
+}
+window.addEventListener("resize",handaleWindowResize);
+// .........infinite loop ...............
+let options={
+  slidesPerView:showPerPage,
+        spaceBetween:50,
+        freeMode:true,
+        loop:true,
+        pagination:{
+          clickable: true,
+        },
+        modules:[FreeMode, Pagination],
+        className:"mySwiper"
+}
+
+
   return (
    <>
    
@@ -14,9 +51,10 @@ export default function ProductSlider() {
 
       <div className="container">
 
-        <div className="row gy-4">
+        <div className=" gy-4">
+          <Swiper {...options}>
 
-          <div className="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+         <SwiperSlide> <div className="d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
             <div className="team-member">
               <div className="member-img">
                 <img src="assets/img/team/team-1.jpg" className="img-fluid" alt=""/>
@@ -33,9 +71,9 @@ export default function ProductSlider() {
                 <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut. Ipsum exercitationem iure minima enim corporis et voluptate.</p>
               </div>
             </div>
-          </div>
+          </div></SwiperSlide>
 
-          <div className="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+<SwiperSlide>          <div className="d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
             <div className="team-member">
               <div className="member-img">
                 <img src="assets/img/team/team-2.jpg" className="img-fluid" alt=""/>
@@ -53,8 +91,10 @@ export default function ProductSlider() {
               </div>
             </div>
           </div>
-
-          <div className="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+</SwiperSlide>
+          
+          <SwiperSlide>
+            <div className="d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
             <div className="team-member">
               <div className="member-img">
                 <img src="assets/img/team/team-3.jpg" className="img-fluid" alt=""/>
@@ -72,8 +112,10 @@ export default function ProductSlider() {
               </div>
             </div>
           </div>
+          </SwiperSlide>
 
-          <div className="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
+        <SwiperSlide>
+            <div className="d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
             <div className="team-member">
               <div className="member-img">
                 <img src="assets/img/team/team-4.jpg" className="img-fluid" alt=""/>
@@ -91,7 +133,8 @@ export default function ProductSlider() {
               </div>
             </div>
           </div>
-
+        </SwiperSlide>
+</Swiper>
         </div>
 
       </div>

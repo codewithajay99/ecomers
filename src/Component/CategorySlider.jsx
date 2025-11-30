@@ -34,7 +34,7 @@ else
 setShowPerPage(6)
 }
 window.addEventListener("resize",handaleWindowResize);
-
+// .........infinite loop ...............
 let options={
   slidesPerView:showPerPage,
         spaceBetween:50,
