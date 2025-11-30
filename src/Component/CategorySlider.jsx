@@ -11,6 +11,9 @@ import 'swiper/css';
 // import required modules
 
 export default function CategorySlider() {
+
+
+
   let[showPerPage,setShowPerPage]=useState(6)
 //   useEffect(()=>{
 // setShowPerPage(()=>{
@@ -31,6 +34,19 @@ else
 setShowPerPage(6)
 }
 window.addEventListener("resize",handaleWindowResize);
+
+let options={
+  slidesPerView:showPerPage,
+        spaceBetween:50,
+        freeMode:true,
+        loop:true,
+        pagination:{
+          clickable: true,
+        },
+        modules:[FreeMode, Pagination],
+        className:"mySwiper"
+}
+
   return (
 <>
   <section id="clients" className="clients section">
@@ -42,25 +58,16 @@ window.addEventListener("resize",handaleWindowResize);
 
       <div className="container" data-aos="fade-up" data-aos-delay="100">
 
-  <Swiper
-        slidesPerView={showPerPage}
-        spaceBetween={30}
-        freeMode={true}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[FreeMode, Pagination]}
-        className="mySwiper"
-      >
-         
-            <SwiperSlide><img src="assets/img/clients/client-1.png" className="img-fluid" alt=""/></SwiperSlide>
-            <SwiperSlide><img src="assets/img/clients/client-2.png" className="img-fluid" alt=""/></SwiperSlide>
-            <SwiperSlide><img src="assets/img/clients/client-3.png" className="img-fluid" alt=""/></SwiperSlide>
-            <SwiperSlide><img src="assets/img/clients/client-4.png" className="img-fluid" alt=""/></SwiperSlide>
-            <SwiperSlide><img src="assets/img/clients/client-5.png" className="img-fluid" alt=""/></SwiperSlide>
-            <SwiperSlide><img src="assets/img/clients/client-6.png" className="img-fluid" alt=""/></SwiperSlide>
-            <SwiperSlide><img src="assets/img/clients/client-7.png" className="img-fluid" alt=""/></SwiperSlide>
-            <SwiperSlide><img src="assets/img/clients/client-8.png" className="img-fluid" alt=""/></SwiperSlide>
+  <Swiper {...options}>
+                 
+            <SwiperSlide><img src="assets/img/clients/client-1.png"  style={{height:80}}  className="img-fluid" alt=""/></SwiperSlide>
+            <SwiperSlide><img src="assets/img/clients/client-2.png" style={{height:80}}  className="img-fluid" alt=""/></SwiperSlide>
+            <SwiperSlide><img src="assets/img/clients/client-3.png" style={{height:80}}  className="img-fluid" alt=""/></SwiperSlide>
+            <SwiperSlide><img src="assets/img/clients/client-4.png" style={{height:80}}  className="img-fluid" alt=""/></SwiperSlide>
+            <SwiperSlide><img src="assets/img/clients/client-5.png" style={{height:80}}  className="img-fluid" alt=""/></SwiperSlide>
+            <SwiperSlide><img src="assets/img/clients/client-6.png" style={{height:80}}  className="img-fluid" alt=""/></SwiperSlide>
+            <SwiperSlide><img src="assets/img/clients/client-7.png" style={{height:80}}  className="img-fluid" alt=""/></SwiperSlide>
+            <SwiperSlide><img src="assets/img/clients/client-8.png" style={{height:80}}  className="img-fluid" alt=""/></SwiperSlide>
        
           <div className="swiper-pagination"></div>
         </Swiper>
