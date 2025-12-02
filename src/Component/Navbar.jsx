@@ -118,6 +118,9 @@ export default function Navbar() {
               </li>
               <li>
                 <NavLink to="/contactus">Contactus</NavLink>
+              </li> 
+              <li>
+                <NavLink to="/admin">Admin</NavLink>
               </li>
               {/* <li className="dropdown"><NavLink to="#"><span>Dropdown</span> <i className="bi bi-chevron-down toggle-dropdown"></i></NavLink>
             <ul>

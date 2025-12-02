@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Pagination } from 'swiper/modules';
 
@@ -15,12 +15,7 @@ export default function CategorySlider() {
 
 
   let[showPerPage,setShowPerPage]=useState(6)
-//   useEffect(()=>{
-// setShowPerPage(()=>{
-//   if(window.innerWidth<500)
-//   return 2
-// })
-//   },[window.innerWidth])
+
 function handaleWindowResize(){
 if(window.innerWidth<576)
   setShowPerPage(2)

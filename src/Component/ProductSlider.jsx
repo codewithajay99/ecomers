@@ -10,7 +10,7 @@ import 'swiper/css';
 
 export default function ProductSlider() {
 
- let[showPerPage,setShowPerPage]=useState(3)
+ let[showPerPage,setShowPerPage]=useState(4)
 
 function handaleWindowResize(){
 if(window.innerWidth<576)

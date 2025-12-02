@@ -5,7 +5,11 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
-
+body{
+  margin: 0;
+  padding: 0;
+    overflow-x: hidden;
+}
 /*--------------------------------------------------------------
 # Font & Color Variables
 # Help: https://bootstrapmade.com/color-system/
