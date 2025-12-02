@@ -11,6 +11,7 @@ import ContactUsPage from './Pages/ContactUsPage'
 import AdminHome from './Pages/Admin/AdminHome'
 import AdminMaincategory from './Pages/Admin/Maincategory/AdminMaincategory'
 import AdminCreateMaincategory from './Pages/Admin/Maincategory/AdminCreateMaincategory'
+import ScrollTop from './Component/ScrollTop'
 
 export default function App() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
         <Route path='/admin/maincategory/create' element={<AdminCreateMaincategory/>}/>
 
     </Routes>
+    <ScrollTop/>
 <Footer/>    
     </BrowserRouter>
   )
