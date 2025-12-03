@@ -3,6 +3,7 @@ import Breadcrum from "../../../Component/Breadcrum";
 import Sidebar from "../Sidebar";
 import { Link } from "react-router-dom";
 import FormValidator from "../../../Validators/FormValidator";
+import ImageValidator from "../../../Validators/ImageValidator";
 export default function AdminCreateMaincategory() {
   let [data, setData] = useState({
     name: "",
@@ -27,12 +28,13 @@ export default function AdminCreateMaincategory() {
     setErrorMessage((old) => {
       return {
         ...old,
-        [name]: FormValidator(e),
+        [name]:e.target.files?ImageValidator(e): FormValidator(e)
       };
     });
     setData((old) => {
       return {
         ...old,
+        // [name]:vlaue
         [name]: name==="active"?(value==="1"?true:false):value
       };
     });
