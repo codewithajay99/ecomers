@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import Breadcrum from "../../../Component/Breadcrum";
 import Sidebar from "../Sidebar";
 import { Link } from "react-router-dom";
-
+import FormValidator from "../../../Validators/FormValidator";
 export default function AdminCreateMaincategory() {
   let [data, setData] = useState({
     name: "",
     pic: "",
     active: true,
   });
+
   // message error
   let [errorMessage, setErrorMessage] = useState({
     name: "Name Field is Mendatory",
@@ -19,9 +20,36 @@ export default function AdminCreateMaincategory() {
   let [show, setShow] = useState(false);
 
   // function
-  function getInputData(e) {}
+  function getInputData(e) {
+    var name = e.target.name;
+    var value = e.target.files ? e.target.files[0].name : e.target.value;
+
+    setErrorMessage((old) => {
+      return {
+        ...old,
+        [name]: FormValidator(e),
+      };
+    });
+    setData((old) => {
+      return {
+        ...old,
+        [name]: value,
+      };
+    });
+  }
   function postData(e) {
     e.preventDefault();
+
+    let error = Object.values(errorMessage).find((x) => x !== "");
+    if (error) setShow(true);
+    else {
+      alert(`
+  Name: ${data.name},
+  Pic: ${data.pic},
+  Active:${data.active}
+
+      `);
+    }
   }
   return (
     <>
@@ -39,7 +67,7 @@ export default function AdminCreateMaincategory() {
               </Link>
             </h5>
 
-            <form>
+            <form onSubmit={postData}>
               <div className="mb-3">
                 <label>Name*</label>
                 <input
@@ -66,7 +94,7 @@ export default function AdminCreateMaincategory() {
                     name="pic"
                     onChange={getInputData}
                     className={`form-control border-3 ${
-                      show && errorMessage.name
+                      show && errorMessage.pic
                         ? "border-danger"
                         : "border-primary"
                     }`}
@@ -87,9 +115,9 @@ export default function AdminCreateMaincategory() {
                   </select>
                 </div>
               </div>
-<div className="mb-3 mt-3">
-  <button className="btn btn-primary w-100">Create</button>
-</div>
+              <div className="mb-3 mt-3">
+                <button className="btn btn-primary w-100">Create</button>
+              </div>
             </form>
           </div>
         </div>
