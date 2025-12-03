@@ -33,7 +33,7 @@ export default function AdminCreateMaincategory() {
     setData((old) => {
       return {
         ...old,
-        [name]: value,
+        [name]: name==="active"?(value==="1"?true:false):value
       };
     });
   }
